@@ -1,3 +1,8 @@
+<div id="notice">
+  <%= notice %>
+</div>
+
+
 <h1> Your Products Everywhere! </h1>
 
 <%= link_to "New Products", new_product_path %>
@@ -13,9 +18,16 @@
 
     <th>Price</th>
     <td><%= product.price %></td>
+
+    <th>created</th>
+    <td><%= product.created_at %></td>
+
+    <th>updated</th>
+    <td><%= product.updated_at %></td>
+
     <td><%= link_to "Edit", edit_product_path(product) %></td>
     <td><%= link_to "Show", product_path(product) %></td>
-    <td><%= link_to "Delete", product_path(product), method: :delete %></td>
+    <td><%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "are you sure?"} %></td>
   </tr>
 </table>
 <% end %>

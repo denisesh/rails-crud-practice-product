@@ -9,8 +9,11 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(params.require(:product).permit(:name, :description, :price))
-    @product.save
-    redirect_to root_path
+    if @product.save
+      redirect_to root_path, notice: "Product was created successfully"
+    else
+      render :new
+    end
   end
 
   def edit
@@ -20,7 +23,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(params.require(:product).permit(:name, :description, :price))
-      redirect_to root_path
+      redirect_to root_path, notice: "Product was updated successfully"
     else
       render :edit
     end
@@ -33,7 +36,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to products_path
+    redirect_to products_path, notice: "product was deleted"
   end
 
 
