@@ -1,3 +1,19 @@
 <h1> Your Products Everywhere! </h1>
 
 <%= link_to "New Products", new_product_path %>
+
+<% @products.each do |product| %>
+<table>
+  <tr>
+    <th>Name</th>
+    <td><%= product.name %></td>
+
+    <th>Description</th>
+    <td><%= product.description %></td>
+
+    <th>Price</th>
+    <td><%= product.price %></td>
+    
+  </tr>
+</table>
+<% end %>
